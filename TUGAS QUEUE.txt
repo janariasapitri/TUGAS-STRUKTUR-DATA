@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package queue;
+
+/**
+ *
+ * @author USER
+ */
+public class Queque1 {
+    private int[] values;
+    private int tail = 0;
+    
+    public Queque1(int jumlah){
+        this.values = new int[jumlah];
+    }
+    
+    public void enqueue(int value) {
+        if( tail < values.length) {
+            values[tail++] = value;
+        } else {
+            //full
+        }
+    }
+    public int dequeue() throws Exception {
+        if( tail > 0){
+            int value= values[0];
+            for (int i = 0; i < values.length-1; i++){
+                values[i] = values[i+1];
+            }
+            tail--;
+            return value;
+        } else {
+            throw new Exception ("Empty");
+        }
+    public static void main (String[]args){
+        
+        Queque1 x = new Queque1(6);
+        x.enqueue(71);
+        x.enqueue(32);
+        x.enqueue(24);
+        x.enqueue(51);
+        x.enqueue(41);
+        x.enqueue(31);
+        
+        try {
+            System.out.println(x.dequeue());
+            System.out.println(x.dequeue());
+            System.out.println(x.dequeue());
+            System.out.println(x.dequeue());
+            System.out.println(x.dequeue());
+            System.out.println(x.dequeue());
+        } catch (Exception e) {
+            System.out.println("Queue kosong...");
+            
+    }
+    }
+    
+}
+
